@@ -31,7 +31,8 @@ function Shop() {
         logo=""
         navItems={["Shop", "Home", "About", "Sign in", "My Cart"]}
       />
-      <ul className="grid grid-cols-4 gap-4">
+      <div className="h-20"></div>
+      <ul className="grid grid-cols-3 gap-4">
         {products.map(product =>
           <li key={product.id}>
             <Card item={product} />
