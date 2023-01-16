@@ -27,7 +27,7 @@ function Card({item}){
           <img className="mx-auto h-[200px]" src={`${item.image}`} alt="" />
         </div>
         <div className="w-1/2 flex flex-col justify-between">
-          <p className="text-sm">{truncateDescription(item.description)}</p>
+          <p className="text-sm break-words">{truncateDescription(item.description)}</p>
           <p className="mb-5">{item.rating.rate}/5 ({item.rating.count})</p>
         </div>
       </div>
