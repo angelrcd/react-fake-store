@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
+
 
 function Navbar({fullLogoURL, logoURL, navItems}) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -9,12 +11,19 @@ function Navbar({fullLogoURL, logoURL, navItems}) {
 
   return (
     <>
-      <nav className="absolute w-screen h-10 bg-gray-200 flex justify-between items-center z-0 border-b border-gray-500 shadow-md">
+      <nav className="fixed w-screen h-10 bg-gray-200 flex justify-between items-center z-0 border-b border-gray-500 shadow-md">
         <img className="ml-3 md:ml-8 h-8" src={fullLogoURL} alt="" />
         <img onClick={handleMenu} className="mr-3 h-8 lg:hidden cursor-pointer hover:bg-gray-300 rounded-full" src="/img/menu-hamburger.svg" alt="" />
         <ul className="hidden lg:flex mr-3 md:mr-8 h-full items-center text-gray-700 text-xl">
           {navItems.map((item, index) => {
-            return <li className="cursor-pointer px-4 rounded-md hover:bg-gray-300" key={index}>{item}</li>;
+            return (
+              <NavLink key={index} to={"/"+item}
+                className={({ isActive }) => 
+                  isActive ? "bg-red-400" : ""
+                }>
+                <li className="cursor-pointer px-4 rounded-md hover:bg-gray-300">{item}</li>
+              </NavLink>
+            );
           })}
         </ul>
       </nav>
